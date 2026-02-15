@@ -1,0 +1,38 @@
+{
+    "docker-project":
+    {
+        "projects":
+        [
+            {
+                "name": "docker-xunlei-arm",
+                "path": "docker"
+            }
+        ]
+    },
+    "data-share":
+    {
+        "shares":
+        [
+            {
+                "name": "docker-xunlei-arm",
+                "permission":
+                {
+                    "rw":
+                    [
+                        "docker-docker-xunlei-arm"
+                    ]
+                }
+            },
+            {
+                "name": "docker-xunlei-arm/data",
+                "permission":
+                {
+                    "rw":
+                    [
+                        "docker-docker-xunlei-arm"
+                    ]
+                }
+            }
+        ]
+    }
+}

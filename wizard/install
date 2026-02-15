@@ -1,0 +1,60 @@
+[
+  {
+    "stepTitle": "欢迎使用",
+    "items": [
+      {
+        "type": "text",
+        "field": "docker_xl_hostname",
+        "label": "迅雷远程控制的名称与此相关，当前设备会显示 `群晖-xxxx`",
+        "rules": [],
+        "options": [],
+        "initValue": "fnOS"
+      },
+      {
+        "type": "text",
+        "field": "docker_xl_dashboard_username",
+        "label": "网页访问的用户名",
+        "rules": [],
+        "options": [],
+        "initValue": ""
+      },
+      {
+        "type": "password",
+        "field": "docker_xl_dashboard_password",
+        "label": "网页访问的密码",
+        "rules": [],
+        "options": [],
+        "initValue": ""
+      },
+      {
+        "type": "tips",
+        "field": "wizard_default",
+        "label": "示例项",
+        "rules": [],
+        "options": [],
+        "helpText": "下载目录默认为:\"文件管理\"->\"应用文件\"->\"docker-xunlei-arm\"->\"TDDownload\""
+      }
+    ]
+  },
+  {
+    "stepTitle": "高级设置",
+    "items": [
+      {
+        "type": "tips",
+        "field": "docker_xl_dashboard_port",
+        "label": "设备绑定-服务端口号",
+        "rules": [],
+        "options": [],
+        "helpText": "【如果没有端口冲突就不要修改，直接下一步】"
+      },
+      {
+        "type": "text",
+        "field": "docker_xl_dashboard_port",
+        "label": "服务端口号",
+        "rules": [],
+        "options": [],
+        "initValue": "2345"
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+{
+  ".url": {
+    "docker-xunlei-arm.Application": {
+      "noDisplay": false,
+      "allUsers": true,
+      "fileTypes": [],
+      "control": {
+        "accessPerm": "readonly"
+      },
+      "protocol": "",
+      "title": "迅雷Arm版",
+      "icon": "images/icon_{0}.png",
+      "type": "url",
+      "port": "${docker_xl_dashboard_port}",
+      "url": "/"
+    }
+  }
+}

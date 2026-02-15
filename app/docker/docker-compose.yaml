@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  xunleiarm:
+    # 必须要指定container_name，否则会导致启停脚本无法工作
+    container_name: "xunleiarm"
+    image: cnk3x/xunlei@sha256:13a330a7280f3ff4444f47c80b4705992df3bf4d27895b6d4bc6445dfc5ffe7c
+    ports:
+      # 面板访问端口，如需更改访问端口到5432，替换前面的2345为5432即可
+      - "${docker_xl_dashboard_port}:2345/tcp"
+    
+    restart: unless-stopped
+
+    # 宿主机名，迅雷远程控制的名称与此相关，会显示 `群晖-r66s`
+    hostname: ${docker_xl_hostname}
+
+    # 必须, cap_add: [SYS_ADMIN] 和 privileged: true 二选一
+    privileged: true
+
+    network_mode: bridge
+    # 可以通过环境变量 XL_DASHBOARD_PORT=5432 来更改内部端口, 不过bridge网络模式没有必要更改默认端口
+    # 如果设置 network_mode: host, 将忽略上面的端口映射配置(ports), 但可以通过环境变量 XL_DASHBOARD_PORT=5432 来更改端口
+    #network_mode: host
+    
+
+    environment:
+      - XL_DASHBOARD_PORT=2345
+      ## 网页访问的用户名
+      - XL_DASHBOARD_USERNAME=${docker_xl_dashboard_username}
+      ## 网页访问的密码
+      - XL_DASHBOARD_PASSWORD=${docker_xl_dashboard_password}
+
+      # 设置用户身份，请确保该用户对 XL_DIR_DOWNLOAD 指定的目录或者默认的 /xunlei/downloads 有读写权限
+      - XL_UID=1000 # 用户ID
+      - XL_GID=1000 # 用户组ID
+
+    volumes:
+      ## 二选一必须，如果没有通过 XL_DIR_DOWNLOAD 指定下载目录，请将下面这行代码替换为上面代码
+      - "/${TRIM_APPDEST_VOL}/@appshare/docker-xunlei-arm/TDDownload:/xunlei/downloads"
+
+      # 必须，数据目录，迅雷运行时，插件，升级，包括登录数据都在这
+      - "/${TRIM_APPDEST_VOL}/@appshare/docker-xunlei-arm/data:/xunlei/data"
+
+      # 可选，首次初始化，会从远程下载迅雷套件到此处，如果不配置每次重新创建都会重新从远程下载
+      - "/${TRIM_APPDEST_VOL}/@appshare/docker-xunlei-arm/cache:/xunlei/var/packages/pan-xunlei-com"

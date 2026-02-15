@@ -1,0 +1,15 @@
+appname=docker-xunlei-arm
+version=1.0.0
+display_name=迅雷Arm
+desc="""docker版迅雷arm版"""
+platform=arm
+source=thirdparty
+maintainer=xm0625
+maintainer_url=https://github.com/xm0625
+distributor=xm0625
+os_min_version=1.1.8
+ctl_stop=true
+desktop_uidir=ui
+desktop_applaunchname=docker-xunlei-arm.Application
+service_port=2345
+checkport=true
